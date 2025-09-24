@@ -1,0 +1,51 @@
+{
+  "name": "utilon",
+  "version": "0.0.3",
+  "description": "A collection of utility functions",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/DobroslavR/utilon#readme",
+  "bugs": {
+    "url": "https://github.com/DobroslavR/utilon/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DobroslavR/utilon.git"
+  },
+  "author": "Dobroslav Radosavljevic <dobroslav.radosavljevic@gmail.com>",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "lint": "ultracite check",
+    "format": "ultracite fix",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "release:tag": "bumpp"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4",
+    "@types/bun": "latest",
+    "@types/node": "^22.15.17",
+    "bumpp": "^10.1.0",
+    "tsdown": "^0.11.9",
+    "typescript": "^5.8.3",
+    "ultracite": "^5.4.4"
+  }
+}
