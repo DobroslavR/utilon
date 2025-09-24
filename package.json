@@ -1,6 +1,6 @@
 {
   "name": "utilon",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A collection of utility functions",
   "type": "module",
   "license": "MIT",
