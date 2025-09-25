@@ -20,9 +20,25 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+    "./string": {
+      "import": "./dist/string/index.js",
+      "types": "./dist/string/index.d.ts"
+    },
+    "./numbers": {
+      "import": "./dist/numbers/index.js",
+      "types": "./dist/numbers/index.d.ts"
+    },
+    "./date": {
+      "import": "./dist/date/index.js",
+      "types": "./dist/date/index.d.ts"
+    },
+    "./array": {
+      "import": "./dist/array/index.js",
+      "types": "./dist/array/index.d.ts"
+    },
+    "./object": {
+      "import": "./dist/object/index.js",
+      "types": "./dist/object/index.d.ts"
     },
     "./package.json": "./package.json"
   },
