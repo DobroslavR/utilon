@@ -2,7 +2,12 @@ import { defineConfig } from "tsdown";
 
 export default defineConfig([
   {
-    entry: ["./src/index.ts"],
+    entry: [
+      "./src/array/index.ts",
+      "./src/date/index.ts",
+      "./src/numbers/index.ts",
+      "./src/string/index.ts",
+    ],
     platform: "neutral",
     dts: true,
     clean: true,
