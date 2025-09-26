@@ -4,6 +4,8 @@
  * @param value1 - The first value (baseline)
  * @param value2 - The second value
  * @returns The percentage difference ((value2 - value1) / value1 * 100)
+ * @throws Will throw an error if the baseline (`value1`) is zero because the
+ * calculation is undefined.
  *
  * @example
  * ```ts
@@ -12,5 +14,10 @@
  * percentageDifference(50, 50) // 0 (no change)
  * ```
  */
-export const percentageDifference = (value1: number, value2: number): number =>
-  ((value2 - value1) / value1) * 100;
+export const percentageDifference = (value1: number, value2: number): number => {
+  if (value1 === 0) {
+    throw new Error("Cannot calculate percentage difference with a zero baseline");
+  }
+
+  return ((value2 - value1) / value1) * 100;
+};
