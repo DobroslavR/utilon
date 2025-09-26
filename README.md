@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/utilon.svg)](https://badge.fury.io/js/utilon)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A comprehensive TypeScript utility library with zero dependencies. Utilon provides type-safe, well-tested utility functions for arrays, strings, numbers, dates, and objects.
+A comprehensive TypeScript utility library with zero dependencies. Utilon provides type-safe, well-tested utility functions for arrays, strings, numbers, and dates.
 
 ## ✨ Features
 
