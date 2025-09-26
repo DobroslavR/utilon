@@ -10,7 +10,7 @@
  * difference([1, 2, 3], [2, 3], [3, 4]) // [1]
  * ```
  */
-export const difference = <T>(...arrays: T[][]): T[] => {
+export const difference = <T>(...arrays: readonly T[][]): T[] => {
   if (arrays.length === 0) {
     return [];
   }

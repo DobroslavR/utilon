@@ -3,15 +3,20 @@
  *
  * @param start - The start number
  * @param end - The end number
- * @returns An array of numbers from start to end inclusive
+ * @returns An array of numbers from start to end inclusive, or empty array if start > end
  *
  * @example
  * ```ts
  * range(1, 5) // [1, 2, 3, 4, 5]
  * range(0, 3) // [0, 1, 2, 3]
+ * range(5, 1) // []
  * ```
  */
 export const range = (start: number, end: number): number[] => {
+  if (start > end) {
+    return [];
+  }
+
   const result: number[] = [];
   for (let i = start; i <= end; i++) {
     result.push(i);

@@ -12,6 +12,6 @@
  * ```
  */
 export const every = <T>(
-  arr: T[],
-  predicate: (item: T, index: number, array: T[]) => boolean
+  arr: readonly T[],
+  predicate: (item: T, index: number, array: readonly T[]) => boolean
 ): boolean => arr.every(predicate);

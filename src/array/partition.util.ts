@@ -12,7 +12,7 @@
  * ```
  */
 export const partition = <T>(
-  arr: T[],
+  arr: readonly T[],
   predicate: (item: T) => boolean
 ): [T[], T[]] => {
   const pass: T[] = [];

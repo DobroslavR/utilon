@@ -12,12 +12,13 @@
  * ```
  */
 export const dropRightWhile = <T>(
-  arr: T[],
+  arr: readonly T[],
   predicate: (item: T) => boolean
 ): T[] => {
-  const reversedIndex = [...arr]
-    .reverse()
-    .findIndex((item) => !predicate(item));
-  const index = reversedIndex === -1 ? 0 : arr.length - reversedIndex;
-  return arr.slice(0, index);
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if (!predicate(arr[i])) {
+      return arr.slice(0, i + 1);
+    }
+  }
+  return [];
 };

@@ -10,6 +10,5 @@
  * compact(['a', '', 'b', null, 'c']) // ['a', 'b', 'c']
  * ```
  */
-export const compact = <T>(
-  arr: (T | null | undefined | false | 0 | "")[]
-): T[] => arr.filter(Boolean) as T[];
+export const compact = <T>(arr: readonly T[]): T[] =>
+  arr.filter((item): item is NonNullable<T> => Boolean(item));

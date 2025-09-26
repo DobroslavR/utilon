@@ -12,7 +12,7 @@
  * ```
  */
 export const dropWhile = <T>(
-  arr: T[],
+  arr: readonly T[],
   predicate: (item: T) => boolean
 ): T[] => {
   const index = arr.findIndex((item) => !predicate(item));

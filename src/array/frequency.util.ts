@@ -10,7 +10,7 @@
  * frequency(['a', 'b', 'a']) // Map { 'a' => 2, 'b' => 1 }
  * ```
  */
-export const frequency = <T>(arr: T[]): Map<T, number> => {
+export const frequency = <T>(arr: readonly T[]): Map<T, number> => {
   const freq = new Map<T, number>();
   for (const item of arr) {
     freq.set(item, (freq.get(item) || 0) + 1);

@@ -15,7 +15,7 @@
  * ```
  */
 export const groupBy = <T>(
-  arr: T[],
+  arr: readonly T[],
   keyFn: (item: T) => string
 ): Record<string, T[]> =>
   arr.reduce(

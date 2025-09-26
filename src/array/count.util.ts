@@ -12,8 +12,8 @@
  * ```
  */
 export const count = <T>(
-  arr: T[],
-  predicate: (item: T, index: number, array: T[]) => boolean
+  arr: readonly T[],
+  predicate: (item: T, index: number, array: readonly T[]) => boolean
 ): number =>
   arr.reduce(
     (acc, item, index, array) =>

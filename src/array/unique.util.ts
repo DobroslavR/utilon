@@ -10,4 +10,4 @@
  * unique(['a', 'b', 'a', 'c']) // ['a', 'b', 'c']
  * ```
  */
-export const unique = <T>(arr: T[]): T[] => [...new Set(arr)];
+export const unique = <T>(arr: readonly T[]): T[] => [...new Set(arr)];
