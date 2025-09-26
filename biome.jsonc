@@ -10,6 +10,9 @@
       "style": {
         "noMagicNumbers": "off",
         "useNamingConvention": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off"
       }
     }
   },
