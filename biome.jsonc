@@ -9,7 +9,8 @@
     "rules": {
       "style": {
         "noMagicNumbers": "off",
-        "useNamingConvention": "off"
+        "useNamingConvention": "off",
+        "useFilenamingConvention": "off"
       },
       "performance": {
         "noBarrelFile": "off"
