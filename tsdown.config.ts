@@ -7,6 +7,7 @@ export default defineConfig([
       "./src/date/index.ts",
       "./src/numbers/index.ts",
       "./src/string/index.ts",
+      "./src/styles/index.ts",
     ],
     platform: "neutral",
     dts: true,

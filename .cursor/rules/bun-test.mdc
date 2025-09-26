@@ -1,0 +1,191 @@
+---
+alwaysApply: true
+---
+
+# Bun Test Runner Best Practices
+
+This project uses Bun's built-in test runner, which is Jest-compatible but has some specific features and requirements.
+
+## Test File Naming
+
+Test files must follow these patterns:
+
+- `*.test.{js|jsx|ts|tsx}`
+- `*_test.{js|jsx|ts|tsx}`
+- `*.spec.{js|jsx|ts|tsx}`
+- `*_spec.{js|jsx|ts|tsx}`
+
+## Basic Usage
+
+```bash
+# Run all tests
+bun test
+
+# Run tests in watch mode
+bun test --watch
+
+# Run specific test file
+bun test ./path/to/specific.test.ts
+
+# Filter tests by name pattern
+bun test --test-name-pattern "addition"
+```
+
+## Test Structure
+
+```typescript
+import {
+  expect,
+  test,
+  describe,
+  beforeEach,
+  afterEach,
+  beforeAll,
+  afterAll,
+} from "bun:test";
+
+describe("Test Suite", () => {
+  beforeAll(() => {
+    // Setup once before all tests
+  });
+
+  beforeEach(() => {
+    // Setup before each test
+  });
+
+  test("should do something", () => {
+    expect(2 + 2).toBe(4);
+  });
+
+  afterEach(() => {
+    // Cleanup after each test
+  });
+
+  afterAll(() => {
+    // Cleanup once after all tests
+  });
+});
+```
+
+## Assertions
+
+Use Bun's expect API (Jest-compatible):
+
+```typescript
+expect(value).toBe(expected);
+expect(value).toEqual(expected);
+expect(value).toBeTruthy();
+expect(value).toBeFalsy();
+expect(value).toBeGreaterThan(number);
+expect(value).toMatch(regex);
+expect(value).toContain(item);
+expect(value).toHaveLength(length);
+```
+
+## Mocks
+
+```typescript
+import { mock } from "bun:test";
+
+// Create mock functions
+const mockFn = mock(() => "mocked value");
+const mockFn = jest.fn(() => "mocked value"); // Also works
+
+// Assertions on mocks
+expect(mockFn).toHaveBeenCalled();
+expect(mockFn).toHaveBeenCalledTimes(1);
+expect(mockFn).toHaveBeenCalledWith(arg1, arg2);
+```
+
+## Snapshot Testing
+
+```typescript
+test("should match snapshot", () => {
+  const result = { data: "test" };
+  expect(result).toMatchSnapshot();
+});
+
+// Update snapshots
+bun test --update-snapshots
+```
+
+## Key Flags and Options
+
+- `--timeout <ms>`: Set per-test timeout (default: 5000ms)
+- `--bail`: Exit after first failure
+- `--bail=<number>`: Exit after N failures
+- `--rerun-each <number>`: Run each test multiple times
+- `--only`: Only run tests marked with `test.only()`
+- `--todo`: Include tests marked with `test.todo()`
+- `--coverage`: Generate coverage report
+- `--reporter=junit --reporter-outfile=./bun.xml`: JUnit XML output
+
+## CI/CD Integration
+
+For GitHub Actions, Bun automatically detects the environment and emits annotations. For other CI systems, use JUnit XML output.
+
+## Watch Mode
+
+```bash
+bun test --watch
+```
+
+Automatically re-runs tests when files change.
+
+## DOM Testing
+
+Bun supports DOM testing libraries like React Testing Library:
+
+```typescript
+import { render, screen } from "@testing-library/react";
+import { expect, test } from "bun:test";
+
+test("renders component", () => {
+  render(<MyComponent />);
+  expect(screen.getByText("Hello")).toBeInTheDocument();
+});
+```
+
+## Best Practices
+
+1. **Use descriptive test names** that explain what behavior is being tested
+2. **Group related tests** with `describe()` blocks
+3. **Use beforeEach/afterEach** for test isolation
+4. **Mock external dependencies** to keep tests focused and fast
+5. **Use snapshots** for testing complex objects or UI output
+6. **Keep tests small and focused** on single behaviors
+7. **Use meaningful assertions** that clearly show what failed
+
+## Common Patterns
+
+```typescript
+// Async tests
+test("async operation", async () => {
+  const result = await someAsyncFunction();
+  expect(result).toBe("expected");
+});
+
+// Testing exceptions
+test("throws error", () => {
+  expect(() => {
+    throw new Error("test error");
+  }).toThrow("test error");
+});
+
+// Skip tests
+test.skip("skipped test", () => {
+  // This test will be skipped
+});
+
+// Only run specific test
+test.only("only this test runs", () => {
+  expect(true).toBe(true);
+});
+```
+
+## Performance Tips
+
+- Bun's test runner runs all tests in a single process
+- Use `--bail` in CI to fail fast
+- Mock heavy dependencies to keep tests fast
+- Group slow tests appropriately
