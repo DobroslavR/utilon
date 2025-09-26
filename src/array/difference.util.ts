@@ -15,7 +15,7 @@ export const difference = <T>(...arrays: T[][]): T[] => {
     return [];
   }
   if (arrays.length === 1) {
-    return arrays[0];
+    return [...arrays[0]];
   }
 
   const [first, ...rest] = arrays;
