@@ -70,6 +70,9 @@ const processValue = (
 /**
  * Build a space-separated class string from a flexible set of inputs.
  *
+ * @param args - Class values to combine
+ * @returns A space-separated string of class names
+ *
  * ### Rules (compatible with `clsx`):
  * - Falsy primitives (`false`, `null`, `undefined`, `0`, `''`) are ignored.
  * - Numbers are included **only if truthy** (so `0` is ignored).
@@ -82,11 +85,11 @@ const processValue = (
  * - Avoids intermediate string concatenations inside the loop.
  *
  * @example
+ * ```ts
  * clsx('a', null, ['b', { c: 1, d: 0 }]) // "a b c"
- * @example
  * clsx({ a: true, b: false }, ['c', ['d', { e: 1 }]]) // "a c d e"
- * @example
  * clsx('btn', 0 && 'hidden', { active: 1, disabled: 0 }) // "btn active"
+ * ```
  */
 export const clsx = (...args: readonly ClassValue[]): string => {
   // Result buffer; one join at the end is typically faster than repeated concatenation.

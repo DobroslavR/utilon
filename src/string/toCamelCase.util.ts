@@ -1,5 +1,15 @@
 /**
- * Converts a string to camelCase
+ * Converts a string to camelCase.
+ *
+ * @param str - The string to convert
+ * @returns The string in camelCase format
+ *
+ * @example
+ * ```ts
+ * toCamelCase('hello world') // 'helloWorld'
+ * toCamelCase('foo-bar-baz') // 'fooBarBaz'
+ * toCamelCase('FOO_BAR_BAZ') // 'fooBarBaz'
+ * ```
  */
 export const toCamelCase = (str: string): string => {
   if (!str) {

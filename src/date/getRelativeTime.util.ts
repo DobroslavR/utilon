@@ -1,5 +1,15 @@
 /**
- * Gets the relative time string (e.g., "2 hours ago", "in 3 days")
+ * Gets the relative time string (e.g., "2 hours ago", "in 3 days").
+ *
+ * @param date - The date to compare against the current time
+ * @returns A relative time string using the International RelativeTimeFormat API
+ *
+ * @example
+ * ```ts
+ * // Assuming current time is 2023-01-15T12:00:00
+ * getRelativeTime(new Date('2023-01-15T10:00:00')) // "2 hours ago"
+ * getRelativeTime(new Date('2023-01-18T12:00:00')) // "in 3 days"
+ * ```
  */
 export const getRelativeTime = (date: Date): string => {
   const now = new Date();
