@@ -15,8 +15,11 @@
  * uniqueBy(users, (user) => user.id) // [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }]
  * ```
  */
-export const uniqueBy = <T, K>(arr: T[], keyFn: (item: T) => K): T[] => {
-  const seen = new Set();
+export const uniqueBy = <T, K>(
+  arr: readonly T[],
+  keyFn: (item: T) => K
+): T[] => {
+  const seen = new Set<K>();
   return arr.filter((item) => {
     const key = keyFn(item);
     if (seen.has(key)) {

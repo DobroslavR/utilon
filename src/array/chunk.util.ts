@@ -2,7 +2,7 @@
  * Chunks an array into smaller arrays of a specified size.
  *
  * @param arr - The array to chunk
- * @param size - The size of each chunk
+ * @param size - The size of each chunk (must be > 0)
  * @returns A new array containing chunks of the original array
  *
  * @example
@@ -11,7 +11,11 @@
  * chunk(['a', 'b', 'c'], 3) // [['a', 'b', 'c']]
  * ```
  */
-export const chunk = <T>(arr: T[], size: number): T[][] => {
+export const chunk = <T>(arr: readonly T[], size: number): T[][] => {
+  if (size <= 0 || !Number.isInteger(size)) {
+    throw new Error("Chunk size must be a positive integer");
+  }
+
   const chunks: T[][] = [];
   for (let i = 0; i < arr.length; i += size) {
     chunks.push(arr.slice(i, i + size));

@@ -13,4 +13,5 @@ import { unique } from "./unique.util";
  * union(['a', 'b'], ['b', 'c']) // ['a', 'b', 'c']
  * ```
  */
-export const union = <T>(...arrays: T[][]): T[] => unique(flatten(arrays));
+export const union = <T>(...arrays: readonly (readonly T[])[]): T[] =>
+  unique(flatten(arrays));

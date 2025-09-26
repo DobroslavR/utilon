@@ -11,15 +11,31 @@
  * sortBy(['apple', 'Banana', 'cherry'], (s) => s.toLowerCase()) // ['apple', 'Banana', 'cherry']
  * ```
  */
-export const sortBy = <T, K>(arr: T[], keyFn: (item: T) => K): T[] =>
-  [...arr].sort((a, b) => {
+export const sortBy = <T, K>(arr: readonly T[], keyFn: (item: T) => K): T[] => {
+  const compareKeys = (a: T, b: T): number => {
     const aKey = keyFn(a);
     const bKey = keyFn(b);
-    if (aKey < bKey) {
+
+    // Handle null/undefined values
+    if (aKey == null) {
+      return bKey == null ? 0 : 1;
+    }
+    if (bKey == null) {
       return -1;
     }
-    if (aKey > bKey) {
+
+    // Convert to strings for consistent comparison
+    const aVal = String(aKey);
+    const bVal = String(bKey);
+
+    if (aVal < bVal) {
+      return -1;
+    }
+    if (aVal > bVal) {
       return 1;
     }
     return 0;
-  });
+  };
+
+  return [...arr].sort(compareKeys);
+};

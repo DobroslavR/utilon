@@ -10,7 +10,7 @@
  * intersection([1, 2, 3], [2, 3], [3, 4]) // [3]
  * ```
  */
-export const intersection = <T>(...arrays: T[][]): T[] => {
+export const intersection = <T>(...arrays: readonly T[][]): T[] => {
   if (arrays.length === 0) {
     return [];
   }
