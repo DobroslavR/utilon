@@ -5,6 +5,9 @@ describe("difference", () => {
   test("difference", () => {
     expect(difference([1, 2, 3], [2, 3], [3])).toEqual([1]);
     expect(difference()).toEqual([]);
-    expect(difference([1, 2])).toEqual([1, 2]);
+    const input = [1, 2];
+    const result = difference(input);
+    expect(result).toEqual([1, 2]);
+    expect(result).not.toBe(input);
   });
 });
