@@ -7,6 +7,7 @@
  * @param toMin - The minimum value of the output range
  * @param toMax - The maximum value of the output range
  * @returns The mapped value in the new range
+ * @throws {RangeError} If the source range has zero width (i.e. `fromMax` equals `fromMin`).
  *
  * @example
  * ```ts
@@ -22,5 +23,12 @@ export const mapRange = (
     toMin,
     toMax,
   }: { fromMin: number; fromMax: number; toMin: number; toMax: number }
-): number =>
-  toMin + ((value - fromMin) * (toMax - toMin)) / (fromMax - fromMin);
+): number => {
+  if (fromMax === fromMin) {
+    throw new RangeError(
+      "mapRange source range must have a non-zero width (fromMax !== fromMin)."
+    );
+  }
+
+  return toMin + ((value - fromMin) * (toMax - toMin)) / (fromMax - fromMin);
+};
