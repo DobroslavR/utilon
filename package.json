@@ -36,10 +36,6 @@
       "import": "./dist/array/index.js",
       "types": "./dist/array/index.d.ts"
     },
-    "./object": {
-      "import": "./dist/object/index.js",
-      "types": "./dist/object/index.d.ts"
-    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
